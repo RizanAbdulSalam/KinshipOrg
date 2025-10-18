@@ -405,5 +405,16 @@
 			});
 		});
 	}
+	$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    items: 1,           // 1 image at a time
+    loop: true,         // infinite loop
+    autoplay: true,     // auto slide
+    autoplayTimeout: 1500, // 1.5 seconds
+    autoplayHoverPause: true, // pause when mouse over
+    dots: true          // bottom dots
+  });
+});
+
 
 })(jQuery);

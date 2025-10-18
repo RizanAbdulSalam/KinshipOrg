@@ -1033,3 +1033,12 @@
 .footer-img {
 	overflow: hidden;
 }
+/* Remove FAQ spacing completely on mobile */
+@media (max-width: 767px) {
+  .faq-area {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}

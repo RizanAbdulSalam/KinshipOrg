@@ -4740,13 +4740,13 @@ button.b-btn.btn-black {
   background-position: center center; }
 
 .slider-height {
-  min-height: 950px; }
+  min-height: 500px; }
 
 .slider-02-height {
-  min-height: 950px; }
+  min-height: 500px; }
 
 .slider-03-height {
-  min-height: 810px; }
+   min-height: 500px;}
 
 .img-shape {
   position: absolute; }
@@ -5696,3 +5696,57 @@ input::-webkit-inner-spin-button {
     -webkit-transition: .3s;
     -o-transition: .3s;
     transition: .3s; }
+    /* === Slider Overlay Mask === */
+.single-slider {
+  position: relative;
+  z-index: 1;
+}
+
+.single-slider::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 40% dark overlay */
+  z-index: 2;
+}
+
+.single-slider .container,
+.single-slider .slider-content {
+  position: relative;
+  z-index: 3; /* keeps text/buttons above mask */
+}
+/* Reduce main heading size in slider */
+.slider-content h1 {
+  font-size: 70px;   /* try 48px instead of the huge default (likely 70–90px) */
+  line-height: 1.2;  /* keeps spacing tighter */
+  font-weight: 700;
+}
+/* Adjust slick arrows (vertical gap) */
+.slick-prev {
+  top: 40% !important;   /* move up */
+  z-index: 10;
+}
+
+.slick-next {
+  top: 55% !important;   /* move down */
+  z-index: 10;
+}
+.video-02-area .col-xl-6:last-child {
+  display: flex;
+  align-items: center;
+}
+.video-02-area img {
+  border: 5px solid #28a745;   /* thickness + color */
+  border-radius: 10px;         /* rounded corners (optional) */
+}
+.counter-area {
+  padding-top: 100px !important;   /* adjust top space */
+  padding-bottom: 70px !important; /* adjust bottom space */
+}
+
+
+
+
+
+
