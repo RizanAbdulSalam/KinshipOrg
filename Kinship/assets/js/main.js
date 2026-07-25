@@ -7,15 +7,6 @@
 		meanScreenWidth: "992"
 	});
 
-	$('.info-bar').on('click', function () {
-		$('.extra-info').addClass('info-open');
-	})
-
-	$('.close-icon').on('click', function () {
-		$('.extra-info').removeClass('info-open');
-	})
-
-
 	// sticky
 	var wind = $(window);
 	var sticky = $('#sticky-header');
@@ -37,6 +28,9 @@
 	// mainSlider
 	function mainSlider() {
 		var BasicSlider = $('.slider-active');
+		if (!BasicSlider.length || typeof $.fn.slick === 'undefined') {
+			return;
+		}
 		BasicSlider.on('init', function (e, slick) {
 			var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
 			doAnimations($firstAnimatingElements);
@@ -101,235 +95,80 @@
 
 
 	// services - active
-	$('.services-active').slick({
-		dots: true,
-		arrows: true,
-		infinite: true,
-		speed: 300,
-		prevArrow: '<button type="button" class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		responsive: [
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-					infinite: true,
+	if ($('.services-active').length && typeof $.fn.slick !== 'undefined') {
+		$('.services-active').slick({
+			dots: true,
+			arrows: true,
+			infinite: true,
+			speed: 300,
+			prevArrow: '<button type="button" class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
+			nextArrow: '<button type="button" class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			responsive: [
+				{
+					breakpoint: 1200,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						infinite: true,
+					}
+				},
+				{
+					breakpoint: 991,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+						arrows: false,
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: false,
+					}
 				}
-			},
-			{
-				breakpoint: 991,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			}
-		]
-	});
+			]
+		});
+	}
 
 	// test active
-	$('.testimonia-item-active').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: true,
-		fade: true,
-		dots: true,
-		prevArrow: '<button type="button" class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
-		asNavFor: '.testimonial-nav'
-	});
-	$('.testimonial-nav').slick({
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		asNavFor: '.testimonia-item-active',
-		dots: false,
-		arrows: false,
-		prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
-		centerMode: true,
-		focusOnSelect: true,
-		centerPadding: 0
-	});
-
-	// brand - active
-	$('.brand-active').slick({
-		dots: false,
-		arrows: false,
-		infinite: true,
-		autoplay: true,
-		speed: 300,
-		prevArrow: '<button type="button" class="slick-prev"><i class="far fa-angle-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="far fa-angle-right"></i></button>',
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		responsive: [
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 1,
-					infinite: true,
-				}
-			},
-			{
-				breakpoint: 991,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			}
-		]
-	});
-	// brand - active
-	$('.brand-2-active').slick({
-		dots: false,
-		arrows: false,
-		infinite: true,
-		autoplay: true,
-		speed: 300,
-		prevArrow: '<button type="button" class="slick-prev"><i class="far fa-angle-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="far fa-angle-right"></i></button>',
-		slidesToShow: 6,
-		slidesToScroll: 1,
-		responsive: [
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 1,
-					infinite: true,
-				}
-			},
-			{
-				breakpoint: 991,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			}
-		]
-	});
-
-	// testimonial - active
-	$('.testimonial-active').slick({
-		dots: true,
-		arrows: true,
-		infinite: true,
-		autoplay: true,
-		speed: 300,
-		prevArrow: '<button type="button" class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		centerMode: true,
-		centerPadding: 0,
-		responsive: [
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-					infinite: true,
-				}
-			},
-			{
-				breakpoint: 991,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					arrows: false,
-				}
-			}
-		]
-	});
+	if ($('.testimonia-item-active').length && $('.testimonial-nav').length && typeof $.fn.slick !== 'undefined') {
+		$('.testimonia-item-active').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+			fade: true,
+			dots: true,
+			prevArrow: '<button type="button" class="slick-prev"><i class="far fa-long-arrow-alt-left"></i></button>',
+			nextArrow: '<button type="button" class="slick-next"><i class="far fa-long-arrow-alt-right"></i></button>',
+			asNavFor: '.testimonial-nav'
+		});
+		$('.testimonial-nav').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			asNavFor: '.testimonia-item-active',
+			dots: false,
+			arrows: false,
+			prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+			nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+			centerMode: true,
+			focusOnSelect: true,
+			centerPadding: 0
+		});
+	}
 
 
 
 	/* counter */
-	$('.counter').counterUp({
-		delay: 10,
-		time: 1000
-	});
-
-	/* magnificPopup img view */
-	$('.popup-image').magnificPopup({
-		type: 'image',
-		gallery: {
-			enabled: true
-		}
-	});
-
-	/* magnificPopup video view */
-	$('.popup-video').magnificPopup({
-		type: 'iframe'
-	});
-
-
-	// isotop
-	$('.grid').imagesLoaded(function () {
-		// init Isotope
-		var $grid = $('.grid').isotope({
-			itemSelector: '.grid-item',
-			percentPosition: true,
-			masonry: {
-				// use outer width of grid-sizer for columnWidth
-				columnWidth: '.grid-item',
-			}
+	if ($('.counter').length && typeof $.fn.counterUp !== 'undefined') {
+		$('.counter').counterUp({
+			delay: 10,
+			time: 1000
 		});
-	});
-
-	// filter items on button click
-	$('.portfolio-menu').on('click', 'button', function () {
-		var filterValue = $(this).attr('data-filter');
-		$grid.isotope({ filter: filterValue });
-	});
-
-	//for menu active class
-	$('.portfolio-menu button').on('click', function (event) {
-		$(this).siblings('.active').removeClass('active');
-		$(this).addClass('active');
-		event.preventDefault();
-	});
-
-
-
+	}
 
 	// scrollToTop
 	$.scrollUp({
@@ -343,78 +182,153 @@
 		activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 	});
 
-	// WOW active
-	new WOW().init();
-
-	// map
-	function basicmap() {
-		// Basic options for a simple Google Map
-		// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-		var mapOptions = {
-			// How zoomed in you want the map to start at (always required)
-			zoom: 11,
-			scrollwheel: false,
-			// The latitude and longitude to center the map (always required)
-			center: new google.maps.LatLng(40.6700, -73.9400), // New York
-			// This is where you would paste any style found on Snazzy Maps.
-			styles: [{ "featureType": "all", "elementType": "geometry.fill", "stylers": [{ "weight": "2.00" }] }, { "featureType": "all", "elementType": "geometry.stroke", "stylers": [{ "color": "#9c9c9c" }] }, { "featureType": "all", "elementType": "labels.text", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": -100 }, { "lightness": 45 }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#eeeeee" }] }, { "featureType": "road", "elementType": "labels.text.fill", "stylers": [{ "color": "#7b7b7b" }] }, { "featureType": "road", "elementType": "labels.text.stroke", "stylers": [{ "color": "#ffffff" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#46bcec" }, { "visibility": "on" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#c8d7d4" }] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "color": "#070707" }] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [{ "color": "#ffffff" }] }]
-		};
-		// Get the HTML DOM element that will contain your map
-		// We are using a div with id="map" seen below in the <body>
-		var mapElement = document.getElementById('contact-map');
-
-		// Create the Google Map using our element and options defined above
-		var map = new google.maps.Map(mapElement, mapOptions);
-
-		// Let's also add a marker while we're at it
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(40.6700, -73.9400),
-			map: map,
-			title: 'Cryptox'
-		});
-	}
-	if ($('#contact-map').length != 0) {
-		google.maps.event.addDomListener(window, 'load', basicmap);
-	}
-	if (typeof ($.fn.knob) != 'undefined') {
-		$('.knob').each(function () {
-			var $this = $(this),
-				knobVal = $this.attr('data-rel');
-
-			$this.knob({
-				'draw': function () {
-					$(this.i).val(this.cv + '%')
-				}
-			});
-
-			$this.appear(function () {
-				$({
-					value: 0
-				}).animate({
-					value: knobVal
-				}, {
-					duration: 2000,
-					easing: 'swing',
-					step: function () {
-						$this.val(Math.ceil(this.value)).trigger('change');
-					}
-				});
-			}, {
-				accX: 0,
-				accY: -150
-			});
-		});
-	}
 	$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    items: 1,           // 1 image at a time
-    loop: true,         // infinite loop
-    autoplay: true,     // auto slide
-    autoplayTimeout: 1500, // 1.5 seconds
-    autoplayHoverPause: true, // pause when mouse over
-    dots: true          // bottom dots
-  });
-});
+		var owlCarousel = $(".owl-carousel");
+		if (owlCarousel.length && typeof $.fn.owlCarousel !== 'undefined') {
+			owlCarousel.owlCarousel({
+				items: 1,           // 1 image at a time
+				loop: true,         // infinite loop
+				autoplay: true,     // auto slide
+				autoplayTimeout: 1500, // 1.5 seconds
+				autoplayHoverPause: true, // pause when mouse over
+				dots: true          // bottom dots
+			});
+		}
+	});
 
 
 })(jQuery);
+
+(function () {
+	"use strict";
+
+	var lightbox = document.getElementById('gallery-lightbox');
+	if (!lightbox) {
+		return;
+	}
+
+	var triggers = Array.prototype.slice.call(
+		document.querySelectorAll('[data-gallery-image], .our-events-details-img')
+	);
+	var lightboxImage = lightbox.querySelector('.gallery-lightbox-image');
+	var closeButton = lightbox.querySelector('.gallery-lightbox-close');
+	var previousButton = lightbox.querySelector('[data-gallery-prev]');
+	var nextButton = lightbox.querySelector('[data-gallery-next]');
+	var currentIndex = 0;
+	var lastFocused = null;
+	var pointerStartX = null;
+
+	var items = triggers.map(function (trigger, index) {
+		var image = trigger.querySelector('img');
+		var title = image && image.getAttribute('alt')
+			? image.getAttribute('alt')
+			: 'Kinship gallery image ' + (index + 1);
+
+		if (!trigger.hasAttribute('data-gallery-image')) {
+			trigger.setAttribute('role', 'button');
+			trigger.setAttribute('tabindex', '0');
+			trigger.setAttribute('aria-label', 'Open ' + title);
+		}
+
+		return {
+			src: trigger.getAttribute('data-gallery-image') || image.getAttribute('src'),
+			title: title
+		};
+	});
+
+	function showImage(index) {
+		currentIndex = (index + items.length) % items.length;
+		lightboxImage.src = items[currentIndex].src;
+		lightboxImage.alt = items[currentIndex].title;
+
+		var preload = new Image();
+		preload.src = items[(currentIndex + 1) % items.length].src;
+	}
+
+	function openLightbox(index) {
+		lastFocused = document.activeElement;
+		showImage(index);
+		lightbox.hidden = false;
+		document.body.classList.add('gallery-lightbox-open');
+		closeButton.focus();
+	}
+
+	function closeLightbox() {
+		lightbox.hidden = true;
+		document.body.classList.remove('gallery-lightbox-open');
+		lightboxImage.removeAttribute('src');
+		if (lastFocused && typeof lastFocused.focus === 'function') {
+			lastFocused.focus();
+		}
+	}
+
+	triggers.forEach(function (trigger, index) {
+		trigger.addEventListener('click', function (event) {
+			event.preventDefault();
+			openLightbox(index);
+		});
+
+		if (trigger.getAttribute('role') === 'button' && trigger.tagName !== 'BUTTON') {
+			trigger.addEventListener('keydown', function (event) {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					openLightbox(index);
+				}
+			});
+		}
+	});
+
+	lightbox.querySelectorAll('[data-gallery-close]').forEach(function (element) {
+		element.addEventListener('click', closeLightbox);
+	});
+
+	previousButton.addEventListener('click', function () {
+		showImage(currentIndex - 1);
+	});
+
+	nextButton.addEventListener('click', function () {
+		showImage(currentIndex + 1);
+	});
+
+	lightbox.addEventListener('pointerdown', function (event) {
+		pointerStartX = event.clientX;
+	});
+
+	lightbox.addEventListener('pointerup', function (event) {
+		if (pointerStartX === null) {
+			return;
+		}
+
+		var distance = event.clientX - pointerStartX;
+		pointerStartX = null;
+
+		if (Math.abs(distance) < 55) {
+			return;
+		}
+
+		showImage(currentIndex + (distance < 0 ? 1 : -1));
+	});
+
+	document.addEventListener('keydown', function (event) {
+		if (lightbox.hidden) {
+			return;
+		}
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		} else if (event.key === 'ArrowLeft') {
+			showImage(currentIndex - 1);
+		} else if (event.key === 'ArrowRight') {
+			showImage(currentIndex + 1);
+		} else if (event.key === 'Tab') {
+			var controls = [closeButton, previousButton, nextButton];
+			var focusedIndex = controls.indexOf(document.activeElement);
+			var direction = event.shiftKey ? -1 : 1;
+
+			if (focusedIndex !== -1) {
+				event.preventDefault();
+				controls[(focusedIndex + direction + controls.length) % controls.length].focus();
+			}
+		}
+	});
+})();
